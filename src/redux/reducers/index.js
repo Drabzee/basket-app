@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET, TOGGLE_ITEM_PURCHASE, UPDATE_FILTER_TEXT } from "../constants";
+import { ADD_TO_BASKET, EMPTY_BASKET, TOGGLE_ITEM_PURCHASE, UPDATE_FILTER_TEXT } from "../constants";
 
 const initialState = {
   itemsList: {
@@ -75,6 +75,8 @@ const rootReducer = (state = initialState, action) => {
       return toggleItemPurchaseHandler(state, action.id);
     case UPDATE_FILTER_TEXT:
       return {...state, filterText: action.text};
+    case EMPTY_BASKET:
+      return {...state, basketList: {}}
     default:
       return state;
   }

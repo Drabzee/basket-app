@@ -1,10 +1,13 @@
 import { connect } from "react-redux";
+import { emptyBasket } from '../redux/actions';
 
-const ItemsList = ({ title, icon, list, type, itemsList, onClickHandler }) => {
+const ItemsList = ({ title, icon, list, type, itemsList, onClickHandler, emptyBasket }) => {
   return (
     <div className="items-list">
       <h3>
-        <i className={`fa fa-${icon}`}></i> {title}
+        <i className={`fa fa-${icon}`}></i> {' '}
+        {title}
+        {type === 'remove' && <i onClick={emptyBasket} className="fa fa-trash"></i>}
       </h3>
       <ul className={`list-item-${type}`}>
         {Object.keys(list).length ? Object.keys(list).map((id) => {
@@ -19,8 +22,12 @@ const ItemsList = ({ title, icon, list, type, itemsList, onClickHandler }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   itemsList: state.itemsList,
 });
 
-export default connect(mapStateToProps)(ItemsList);
+const mapDispatchToProps = dispatch => ({
+  emptyBasket: () => dispatch(emptyBasket())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

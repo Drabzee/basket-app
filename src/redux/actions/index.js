@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET, TOGGLE_ITEM_PURCHASE, UPDATE_FILTER_TEXT } from "../constants";
+import { ADD_TO_BASKET, EMPTY_BASKET, TOGGLE_ITEM_PURCHASE, UPDATE_FILTER_TEXT } from "../constants";
 
 export const addToBasket = (id) => ({
   type: ADD_TO_BASKET,
@@ -13,4 +13,8 @@ export const toggleItemPurchase = (id) => ({
 export const updateFilterText = (text) => ({
   type: UPDATE_FILTER_TEXT,
   text
-})
+});
+
+export const emptyBasket = () => ({
+  type: EMPTY_BASKET
+});
